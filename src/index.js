@@ -9,13 +9,14 @@ const userToken = "";
 const userOrg = "";
 
 const getRepos = () => {
-    axios.get(apiUrl + "/orgs/" + userOrg + "/repos", {
+    axios.get(apiUrl + "/orgs/" + userOrg + "/repos?page=1", {
         auth: {
             username: userName,
             password: userToken
         }
     }).then((res) => {
         res.data.forEach((repo) => {
+            console.log(repo.url);
             getLabels(repo);
         });
     });
